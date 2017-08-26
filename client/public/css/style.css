@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+html, body {
+  width: 100%;
+  box-sizing: 0;
+  border-box: 0;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.pageWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: black;
+  padding-left: 4em;
+}
+
+.searchSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+}
+
+.recipeSearchForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.recipeSearchSubmit {
+  width: 80%;
+  padding: .8em;
+  margin: 0 auto;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 1em;
+  color: white;
+  font-family: Archivo Black;
+}
+
+.gridSide {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  height: 100vh;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+  width: 75%;
+}
+
+.gridSide li {
+  width: 175px;
+  height: 175px;
+  list-style: none;
+  margin: 0;
+  background-size: cover;
+}
+
+.recipeSearchInput {
+  padding: .7em;
+  font-family: Archivo Black;
+  text-align: center;
+  font-size: medium;
+  text-transform: uppercase;
+  margin-bottom: 1.3em;
+  background-color: lightgrey;
+  border-radius: .8em;
+  color: black;
+  width: 100%;
+}
+
+.recipePic {
+  position: relative;
+}
+
+.recipeData {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  padding-top: .8em;
+  color: transparent;
+  text-align: center;
+}
+
+.recipeData:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.recipeContainer {
+  position: relative;
+  overflow: hidden;
+}
