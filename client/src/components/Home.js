@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {TimelineMax} from 'gsap';
+import {TimelineMax, Elastic} from 'gsap';
 import GSAP from 'react-gsap-enhancer';
+import Recipe from './Recipe';
 
 class Home extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class Home extends Component {
 
     this.state = {
       searchResults: [],
-      gifVisibility: "notVisible"
+      gifVisibility: "notVisible",
+      recipe: {}
     }
   }
 
@@ -22,15 +24,15 @@ class Home extends Component {
 
   searchSubmitHandler(event) {
     this.isLoading();
-
     axios.get("/api/recipes/" + this.state.recipeSearch)
       .then((response) => {
         const searchResults = response.data.recipes;
         console.log(searchResults);
         this.setState({
           searchResults: searchResults,
-          gifVisibility: "notVisible"
+          gifVisibility: "notVisible",
         });
+        this.showResults();
       });
     event.preventDefault();
   }
@@ -39,6 +41,13 @@ class Home extends Component {
       this.setState({
         gifVisibility: "visibile"
       });
+  }
+
+  showResults() {
+    if (this.state.searchResults.length > 20) {
+      const showRecipes = new TimelineMax();
+      showRecipes.staggerFrom(".recipeContainer", 2, {scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.01);
+    }
   }
 
 
@@ -52,19 +61,14 @@ class Home extends Component {
             <input className="recipeSearchSubmit" type="submit" value="submit" />
           </form>
           <div className="aboutContainer">
-            <p className="aboutProjectText">A visual exploration of the <a href="#">Food2Fork API</a><br />from <a href="http://www.creativedesignsbymike.com" target="_blank">Mike Dreiling</a></p>
+            <p className="aboutProjectText">A visual exploration of the <a href="http://food2fork.com/about/api" target="_blank" alt="Link To The API used in this project">Food2Fork API</a><br />from <a href="http://www.creativedesignsbymike.com" target="_blank">Mike Dreiling</a></p>
           </div>
         </div>
         <img src="img/ajax-loader.gif" className={this.state.gifVisibility} />
         <ul className="gridSide">
-            {this.state.searchResults.map((recipe) =>
-              <div className="recipeContainer">
-                <li className="recipePic" style={{
-                  backgroundImage: 'url(' + recipe.image_url + ')'
-                }}></li>
-                <li className="recipeData">{recipe.title}</li>
-              </div>
-            )}
+          {this.state.searchResults.map((recipe) =>
+            <Recipe recipe={recipe} />
+          )}
         </ul>
       </div>
     );
