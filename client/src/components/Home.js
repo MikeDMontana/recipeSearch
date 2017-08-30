@@ -38,15 +38,15 @@ class Home extends Component {
   }
 
   isLoading() {
-      this.setState({
-        gifVisibility: "visibile"
-      });
+    this.setState({
+      gifVisibility: "visibile"
+    });
   }
 
   showResults() {
     if (this.state.searchResults.length > 20) {
       const showRecipes = new TimelineMax();
-      showRecipes.staggerFrom(".recipeContainer", 2, {scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.01);
+      showRecipes.staggerFrom(".recipeNotClicked", 2, {scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.01);
     }
   }
 
@@ -55,7 +55,7 @@ class Home extends Component {
     return (
       <div className="pageWrapper">
         <div className="searchSide">
-          <img src="/img/logo.png" alt="Foodies Find It A React Visual Experiment By Mike Dreiling"/>
+          <img className="logo" src="/img/logo.png" alt="Foodies Find It A React Visual Experiment By Mike Dreiling"/>
           <form className="recipeSearchForm" onSubmit={this.searchSubmitHandler.bind(this)}>
             <input className="recipeSearchInput" type="text" onChange={this.recipeChangeHandler.bind(this)} placeholder="SEARCH FOR RECIPES" />
             <input className="recipeSearchSubmit" type="submit" value="submit" />

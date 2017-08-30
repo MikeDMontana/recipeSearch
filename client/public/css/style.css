@@ -12,6 +12,10 @@ ul {
   padding: 0;
 }
 
+.logo {
+  max-width: 100%;
+}
+
 .pageWrapper {
   display: flex;
   flex-direction: row;
@@ -33,7 +37,6 @@ ul {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 0 auto;
 }
 
 .recipeSearchSubmit {
@@ -55,20 +58,13 @@ ul {
   overflow:hidden;
   margin: 0;
   padding: 0;
-  width: 75%;
+  width: 50%;
+  position: relative;
 }
 
-.gridSide li {
-  width: 175px;
-  height: 175px;
-  list-style: none;
-  margin: 0;
-  background-size: cover;
-  cursor: pointer;
-}
 
 .recipeSearchInput {
-  padding: .7em;
+  padding: .7em 0em;
   font-family: Archivo Black;
   text-align: center;
   font-size: medium;
@@ -80,15 +76,46 @@ ul {
   width: 100%;
 }
 
-.recipePic {
+.recipeNotClicked {
   position: relative;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.recipeClicked {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background-color:white;
+}
+
+.recipeContainerLarge {
+  z-index: 750;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, .8);
+  position: absolute;
+  top: 0;
+  right: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.recipeContainerLarge img {
+  width: 70%;
 }
 
 .recipeData {
   position: absolute;
   z-index: 100;
   top: 0;
-  padding-top: .8em;
   color: transparent;
   text-align: center;
   font-family: Archivo Black;
@@ -96,12 +123,17 @@ ul {
 
 .recipeData:hover {
   color: black;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 161, 161, .5);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 .recipeContainer {
   position: relative;
   overflow: hidden;
+  width: 20%;
+  height: 20%;
 }
 
 .notVisible {
@@ -130,4 +162,29 @@ ul {
 .aboutProjectText a {
   color: #9FFFFF;
   text-decoration: none;
+}
+
+.openRecipeImgHolder {
+  width: 100%;
+  height: 65%;
+}
+
+.openRecipeData {
+  z-index: 1000;
+  padding: 2em;
+  list-style: none;
+}
+
+.openRecipeTitle a {
+  font-family: Archivo Black;
+  margin: .5em 0em .5em 0em;
+  color: black;
+  text-decoration: none;
+}
+
+.openRecipePublisher a {
+  color: #9FFFFF;
+  text-decoration: none;
+  background-color: black;
+  padding: .5em;
 }
