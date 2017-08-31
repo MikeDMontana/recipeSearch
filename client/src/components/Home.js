@@ -11,10 +11,12 @@ class Home extends Component {
     this.state = {
       searchResults: [],
       gifVisibility: "notVisible",
-      recipe: {}
+      recipe: {},
+      recipePage: 1
     }
   }
 
+  // recipe search change handler for user input
   recipeChangeHandler(event) {
     const recipeSearch = event.target.value;
     this.setState({
@@ -22,34 +24,40 @@ class Home extends Component {
     });
   }
 
+  // recipe search submit handler.  Also calls isLoading() which sets state of our loader gifVisibility
+  // recipePage variable is used so the NEXT button can be used to return next 30 results from our API
+  //  API being used is food2Fork
   searchSubmitHandler(event) {
     this.isLoading();
-    axios.get("/api/recipes/" + this.state.recipeSearch)
+
+    axios.get("/api/recipes/" + this.state.recipeSearch + '/' + this.state.recipePage)
       .then((response) => {
         const searchResults = response.data.recipes;
         console.log(searchResults);
         this.setState({
           searchResults: searchResults,
           gifVisibility: "notVisible",
+          recipePage: this.state.recipePage + 1
         });
         this.showResults();
       });
     event.preventDefault();
   }
 
+  // sets state of visibility of our gif loader
   isLoading() {
     this.setState({
       gifVisibility: "visibile"
     });
   }
 
+  // gsap animations
   showResults() {
     if (this.state.searchResults.length > 20) {
       const showRecipes = new TimelineMax();
       showRecipes.staggerFrom(".recipeNotClicked", 2, {scale:0.5, opacity:0, delay:0.1, ease:Elastic.easeOut, force3D:true}, 0.01);
     }
   }
-
 
   render() {
     return (
@@ -66,6 +74,7 @@ class Home extends Component {
         </div>
         <img src="img/ajax-loader.gif" className={this.state.gifVisibility} />
         <ul className="gridSide">
+          <div className="nextArrow" onClick={this.searchSubmitHandler.bind(this)}>NextPage</div>
           {this.state.searchResults.map((recipe) =>
             <Recipe recipe={recipe} />
           )}

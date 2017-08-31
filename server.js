@@ -34,10 +34,10 @@ router.get('/', function(req, res) {
 
 
 //***************************************NEW ROUTE FOR EXTERNAL API**************************
-router.route('/recipes/:recipeSearch')
+router.route('/recipes/:recipeSearch/:recipePage')
 
 .get(function(req, res) {
-  var url = 'http://food2fork.com/api/search?key=28c6a5c2d2a2364793dc4e56623f9826&q=' + req.params.recipeSearch;
+  var url = 'http://food2fork.com/api/search?key=28c6a5c2d2a2364793dc4e56623f9826&q=' + req.params.recipeSearch + '&page=' + req.params.recipePage;
   req.pipe(request(url)).pipe(res);
 });
 

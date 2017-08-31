@@ -167,6 +167,7 @@ ul {
 .openRecipeImgHolder {
   width: 100%;
   height: 65%;
+  cursor: pointer;
 }
 
 .openRecipeData {
@@ -186,5 +187,21 @@ ul {
   color: #9FFFFF;
   text-decoration: none;
   background-color: black;
+  padding: .5em;
+}
+
+.openRecipeRank {
+  margin-top: 5em;
+}
+
+.nextArrow {
+  position: absolute;
+  z-index: 1100;
+  color: white;
+  font-family: Archivo Black;
+  margin: 0 auto;
+  bottom: 10px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .5);
   padding: .5em;
 }
