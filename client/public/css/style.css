@@ -19,9 +19,8 @@ ul {
 .pageWrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: black;
-  padding-left: 4em;
   background-image: url('/img/foodPattern.png');
 }
 
@@ -30,6 +29,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   width: 25%;
+  margin: 0 auto;
 }
 
 .recipeSearchForm {
@@ -58,7 +58,7 @@ ul {
   overflow:hidden;
   margin: 0;
   padding: 0;
-  width: 50%;
+  width: 65%;
   position: relative;
 }
 
@@ -204,4 +204,44 @@ ul {
   cursor: pointer;
   background-color: rgba(0, 0, 0, .5);
   padding: .5em;
+}
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<< 800 px and smaller styles >>>>>>>>>>>>>>>>>>>>>>>>> */
+@media screen and (max-width: 800px) {
+
+  .pageWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: black;
+    background-image: url('/img/foodPattern.png');
+  }
+
+  .searchSide {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .gridSide {
+    width: 100%;
+  }
+
+  .logo {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 2em;
+  }
+
+  .recipeSearchForm {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .pageWrapper {
+    padding: 0;
+  }
+
+  .aboutProjectText {
+    margin: 2em 0em 5em 0em;
+  }
 }
